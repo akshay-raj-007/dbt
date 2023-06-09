@@ -1,0 +1,118 @@
+version: 2
+
+models:
+  - name: stg_category_name_translation
+    description: "Category name translation details"
+    columns:
+      - name: product_category_name
+        description: "The primary key for this table. Product category name"
+        tests:
+         - not_null
+    
+      - name: product_category_name_english
+        description: "Corresponding translation of category name in English"
+
+  - name: stg_customers_data
+    description: "Customer related data "   
+    columns: 
+      - name: customer_id
+        description: customer id
+        tests: 
+         - not_null
+
+      - name: customer_zip_code
+        description: customer zip code 
+
+      - name: customer_city     
+        description: city name
+
+      - name: customer_state_code
+        description: customer state code  
+
+
+  - name: stg_orders_dataset
+    description:  Customer order details
+    columns: 
+     - name: order_id
+       description: order id
+       tests: 
+        - not_null
+
+     - name: customer_id
+       description: customer id
+
+     - name: order_status
+       description: Order status details
+       tests:
+         - accepted_values:
+              values: ['approved', 'canceled', 'created', 'delivered','invoiced','processing','shipped','unavailable']  
+
+     - name: order_purchase_timestamp
+       description: order purchase timestamp
+
+     - name: order_approved_at
+       description: order approved timestamp
+
+     - name: order_delivered_carrier_date
+       description: order delivered carrier timestamp    
+
+     - name: order_delivered_customer_date
+       description: order delivered customer date
+
+     - name: order_estimated_delivery_date
+       description: order estimated delivery date
+            
+
+
+
+  - name: stg_incremental_table
+    description: Testing incremental dataset
+
+  - name: stg_order_items_dataset
+    description: Order items details
+    columns: 
+      - name: order_id
+        description: order id 
+        tests:
+          - not_null
+
+      - name: order_item_id
+        description: order item id
+
+      - name: product_id
+        description: product id 
+
+      - name: seller_id
+        description: seller id 
+
+      - name: shipping_date 
+        description: shipping date 
+
+      - name: price
+        description: price           
+
+  - name: stg_order_reviews_data
+    description: Review details  
+    columns:
+      - name: review_id
+        description: review id
+        tests:
+          - not_null
+
+      - name: order_id
+        description: order_id
+
+      - name: review_score
+        description: review_score
+        tests: 
+         - accepted_values:
+              values: [1,2,3,4,5]
+
+
+  
+
+      - name: timestamp_column
+        description: Current timestamp    
+
+  - name: stg_date_data
+    description: Date dataset for test purpose       

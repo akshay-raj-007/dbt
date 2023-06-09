@@ -1,0 +1,9 @@
+version: 2
+
+models:
+  - name: sales_per_month
+    description: "Sales per month for the year 2021"
+
+
+  - name: total_orders_per_category
+    description: "Total number of orders in each product category"  
